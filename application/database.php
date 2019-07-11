@@ -13,17 +13,17 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => '127.0.0.1',
+    'hostname'        => '数据库地址',
     // 数据库名
-    'database'        => 'video',
+    'database'        => '数据库名',
     // 用户名
-    //'username'        => 'root',
-    'username'        => 'lafeier',
+    //'username'        => '账号',
+
     // 密码
-    //'password'        => 'whntengxun147+',
-    'password'        => 'lafeier888',
+    //'password'        => '密码',
+
     // 端口
-    'hostport'        => '3306',
+    'hostport'        => '端口号',
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
