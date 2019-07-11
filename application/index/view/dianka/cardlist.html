@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!-- 引入vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<style>
+			body{
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<el-row>
+				<el-col :span="24">
+					<div class="grid-content bg-purple-dark">
+						<el-table :data="cardlist" height="250" border >
+							<el-table-column prop="dianka" label="点卡" >
+							</el-table-column>
+							<el-table-column prop="name" label="类型" >
+							</el-table-column>
+							
+						</el-table>
+					</div>
+				</el-col>
+			</el-row>
+
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					cardlist: [{
+						date: '无数据',
+						name: '无数据',
+						address: '无数据'
+					}]
+
+				}
+			},
+			methods: {
+				initdata(){
+					this.$http.get('http://localhost/index/dianka/ylog_json.html').then(function(res) {
+						this.cardlist = res.body
+					}, function() {
+						console.log('请求失败处理');
+					});
+				}
+				
+			}
+		})
+		vm.initdata()
+	</script>
+</html>

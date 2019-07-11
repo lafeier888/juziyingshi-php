@@ -1,0 +1,96 @@
+<!-- Responsive Table -->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+
+                <div class="caption font-green bold">
+                    <span class="am-icon-code"></span> 激活码使用记录
+                </div>
+
+
+                <div class="panel-options">
+
+
+                    <a href="#" data-toggle="panel">
+                        <span class="collapse-icon">&ndash;</span>
+                        <span class="expand-icon">+</span>
+                    </a>
+
+                    <a href="#" data-toggle="reload">
+                        <i class="fa-rotate-right"></i>
+                    </a>
+
+                    <a href="#" data-toggle="remove">
+                        &times;
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div style="text-align: center">
+                    <form class="validate" method="get" action="{:url('dianka/slog')}">
+
+                        <input class="form-control" placeholder="&nbsp;卡号或者使用者账号" type="text" name="user" style="height: 38px">
+
+
+                        <button type="submit" class="btn btn-turquoise" style="height: 38px;margin-top: 7px;">搜索
+                        </button>
+                    </form>
+
+                </div>
+                <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk"
+                     data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+
+
+                    <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk"
+                         data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+                        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                            <thead>
+                            <tr>
+
+                                <th>卡号</th>
+                                <th>使用时间</th>
+                                <?php if(session('power')=='0'){?>
+                                <th>充值时间</th>
+                                <th>使用人</th>
+                                <th>创建时间</th>
+                                <th>生成人</th>
+                                <th>备注</th>
+                                <?php } ?>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="vo"}
+                            <tr>
+
+                                <td>{$vo.dianka}</td>
+                                <td><?php echo date('Y-m-d H:i:s',$vo['stime'])?></td>
+                                <?php if(session('power')=='0'){?>
+                                <td>{$vo.name}</td>
+                                <td>{:_name($vo.yid)}</td>
+                                <td><?php echo date('Y-m-d H:i:s',$vo['ctime'])?></td>
+                                <td>{:_name($vo.uid)}</td>
+                                <?php } ?>
+                                <td>{$vo.comment}</td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                    {$list->render()}
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>

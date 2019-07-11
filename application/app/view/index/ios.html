@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>聚合影视_IOS版下载</title>
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=100%, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link type="text/css" rel="stylesheet" href="/public/static/share/ios/base.css">
+<link type="text/css" rel="stylesheet" href="/public/static/share/ios/style.css">
+<script type="text/javascript" src="/public/static/share/ios/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/public/static/share/ios/base.js"></script>
+</head>
+    <body>
+        <div class="container">
+            <!-- <div class="head">
+                <h1>下载安装</h1>
+            </div> -->
+            <div class="img pos">
+                <img src="/public/static/share/ios/banner.jpg">
+                <div class="img_btn">
+                    <button type="button" class="lijianzhuang">下载安装</button>
+                    <i>更新</i>
+                </div>
+            </div>
+        </div>
+        <div class="mask" style="display: none;">
+            <div class="alert-box">
+                <div class="close-btn"></div>
+                <div class="size-pic">
+                    <img src="/public/static/share/ios/m1.gif">
+                    <!-- <img src="images/m2.png" style="display: none;"> -->
+                </div>
+                <p class="hint">设置→通用→设备管理→信任→完成</p>
+                <div class="alert-btn">
+                    <div class="color-bar now-download">立即安装</div>
+                    <div class="color-bar change top-bar" style="display: none; width: 0.1%;"></div>
+                    <div class="color-bar change buttom-bar" style="display: none;"></div>
+                    <a href="prefs:root=General&amp;path=ManagedConfigurationList" class="color-bar change text-bar" style="display: none;">安装中</a>
+                </div>
+            </div>
+        </div>
+        <div class="wechat"><img src="/public/static/share/ios/live_weixin_iphone.png" alt="点击右上角，然后选择浏览器打开！"></div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $.each($('.lists li'),function(i,o){
+                    $(o).css('top',i*80+'px');
+                });
+            });
+            setInterval(function(){
+                var l = $('.lists li').length - 1; //9
+                $.each($('.lists li'),function(i,o){
+                    var top = (i-1)*80;
+                    $(o).animate({top: top+'px'},function(){
+                        var h = parseInt($(o).css('top'));
+                        if(h <= -80){
+                            $(o).css('top',l*80+'px');
+                            $(o).appendTo($('.lists'));
+                        }
+                    });
+                });
+            },2000);
+        </script>
+</body></html>
